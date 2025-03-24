@@ -23,11 +23,13 @@ A Django-based backend for the Club Blog application, providing a robust API and
 ## Setup
 
 1. Create a virtual environment:
+
 ```bash
 python -m venv venv
 ```
 
 2. Activate the virtual environment:
+
 ```bash
 # Windows
 venv\Scripts\activate
@@ -37,21 +39,25 @@ source venv/bin/activate
 ```
 
 3. Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
 4. Run migrations:
+
 ```bash
 python manage.py migrate
 ```
 
 5. Create a superuser:
+
 ```bash
 python manage.py createsuperuser
 ```
 
 6. Start the development server:
+
 ```bash
 python manage.py runserver
 ```
@@ -61,6 +67,7 @@ The server will start at `http://localhost:8000`
 ## API Endpoints
 
 ### Blog Posts
+
 - `GET /api/posts/` - List all posts
 - `POST /api/posts/` - Create a new post (admin only)
 - `GET /api/posts/{id}/` - Get post details
@@ -68,6 +75,7 @@ The server will start at `http://localhost:8000`
 - `DELETE /api/posts/{id}/` - Delete a post (admin only)
 
 ### Comments
+
 - `GET /api/comments/` - List all comments
 - `POST /api/comments/` - Create a new comment
 - `GET /api/comments/{id}/` - Get comment details
@@ -77,6 +85,7 @@ The server will start at `http://localhost:8000`
 ## Admin Interface
 
 Access the Django admin interface at `http://localhost:8000/admin` to manage:
+
 - Blog posts
 - Comments
 - Users
@@ -105,17 +114,20 @@ backend/
 ## Development
 
 ### Adding New Features
+
 1. Create models in `blog/models.py`
 2. Create serializers in `blog/serializers.py`
 3. Add views in `blog/views.py`
 4. Update URL patterns in `blog/urls.py`
 5. Run migrations:
+
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
 ### Code Style
+
 - Follow PEP 8 guidelines
 - Use meaningful variable and function names
 - Add docstrings for functions and classes
@@ -130,5 +142,10 @@ python manage.py migrate
 - CSRF protection enabled
 
 ## License
+
+## FrontEnd
+
+-cd <project_name>
+-npm start
 
 MIT License - Feel free to use this project for your own purposes.
