@@ -186,7 +186,7 @@ const Footer = ({ isAdmin }) => {
           >
             {"© "}
             {new Date().getFullYear()}
-            {" Club Blog - Jawahar Navodaya Vidyalaya, Budgam"}
+            {" Club Blog - Jawahar Navodaya Vidyalaya, Budgam "}
           </Typography>
         </Box>
       </Container>
