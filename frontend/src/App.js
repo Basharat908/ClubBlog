@@ -65,7 +65,7 @@ function App() {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:8000/api/posts/');
+      const response = await axios.get('https://youngwriterclubjnvbudgam.in/api/posts/');
       setPosts(response.data);
       setError(null);
     } catch (error) {
