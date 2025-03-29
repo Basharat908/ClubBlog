@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-+sd9fevht7c8#zl#31e4j!&z*xm!hr2w*lfnj%i_aal_t4y&02
 # SECURITY WARNING: don't run with debug turned on inn production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1","youngwriterclubjnvbudgam.in","www.youngwriterclubjnvbudgam.in", "localhost",]
+ALLOWED_HOSTS = ["127.0.0.1","youngwriterclubjnvbudgam.in","www.youngwriterclubjnvbudgam.in", "localhost","13.203.111.160",]
 
 # Application definition
 
@@ -136,6 +136,7 @@ CORS_ALLOW_ALL_ORIGINS = True  # Only for development
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "13.203.111.160",
     "https://youngwriterclubjnvbudgam.in",
 ]
 CORS_ALLOW_CREDENTIALS = True
@@ -144,6 +145,7 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "13.203.111.160",
     "https://youngwriterclubjnvbudgam.in",
 ]
 
