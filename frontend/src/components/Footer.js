@@ -9,11 +9,17 @@ import {
   Email,
   Home,
   AutoStories as BlogIcon,
+  Instagram,
+  ContactMail as ContactMailIcon,
 } from "@mui/icons-material";
 
 const Footer = ({ isAdmin }) => {
   const handleAdminClick = () => {
     window.location.href = "http://localhost:8000/admin/";
+  };
+
+  const handleEmailClick = () => {
+    window.open("mailto:contact@clubblog.com", "_blank");
   };
 
   return (
@@ -38,14 +44,46 @@ const Footer = ({ isAdmin }) => {
             gap: 3,
           }}
         >
-          <Box sx={{ textAlign: { xs: "center", sm: "left" } }}>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-              <BlogIcon sx={{ color: "#FF9966" }} />
-              <Typography variant="h6" sx={{ color: "white" }}>
+          {/* Brand Info */}
+          <Box
+            sx={{
+              textAlign: { xs: "center", sm: "left" },
+              maxWidth: { xs: "100%", sm: "30%" },
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                mb: 2,
+                justifyContent: { xs: "center", sm: "flex-start" },
+              }}
+            >
+              <BlogIcon sx={{ color: "#FF9966", fontSize: "2rem" }} />
+              <Typography
+                variant="h6"
+                sx={{
+                  color: "white",
+                  fontWeight: 700,
+                  background: "linear-gradient(to right, #FF9966, #FFB899)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
                 Club Blog
               </Typography>
             </Box>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
+
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                mb: 1,
+                justifyContent: { xs: "center", sm: "flex-start" },
+              }}
+            >
               <LocationOn sx={{ color: "#FF9966" }} />
               <Typography
                 variant="body2"
@@ -54,28 +92,82 @@ const Footer = ({ isAdmin }) => {
                 Jawahar Navodaya Vidyalaya, Budgam
               </Typography>
             </Box>
+
             <Typography
               variant="body2"
-              sx={{ color: "rgba(255, 255, 255, 0.8)", ml: 3.5 }}
+              sx={{
+                color: "rgba(255, 255, 255, 0.8)",
+                ml: 3.5,
+                textAlign: { xs: "center", sm: "left" },
+              }}
             >
               District Budgam, 191111 (J&K-UT)
             </Typography>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1 }}>
-              <Email sx={{ color: "#FF9966" }} />
+
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                mt: 1,
+                justifyContent: { xs: "center", sm: "flex-start" },
+                cursor: "pointer",
+                "&:hover": {
+                  "& .MuiTypography-root": {
+                    color: "white",
+                    textDecoration: "underline",
+                  },
+                  "& .MuiSvgIcon-root": {
+                    color: "#FFB899",
+                    transform: "scale(1.1)",
+                  },
+                },
+              }}
+              onClick={handleEmailClick}
+            >
+              <Email
+                sx={{
+                  color: "#FF9966",
+                  transition: "all 0.2s ease",
+                }}
+              />
               <Typography
                 variant="body2"
-                sx={{ color: "rgba(255, 255, 255, 0.8)" }}
+                sx={{
+                  color: "rgba(255, 255, 255, 0.8)",
+                  transition: "all 0.2s ease",
+                }}
               >
-                contact@clubblog.com
+                jnvbudgam87@gmail.com
               </Typography>
             </Box>
           </Box>
 
-          <Box sx={{ textAlign: { xs: "center", sm: "left" } }}>
-            <Typography variant="h6" gutterBottom sx={{ color: "white" }}>
+          {/* Quick Links */}
+          <Box
+            sx={{
+              textAlign: { xs: "center", sm: "left" },
+              maxWidth: { xs: "100%", sm: "30%" },
+            }}
+          >
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                color: "white",
+                fontWeight: 600,
+                mb: 2,
+              }}
+            >
               Quick Links
             </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 1.5,
+              }}
+            >
               <Link
                 href="/"
                 sx={{
@@ -84,8 +176,10 @@ const Footer = ({ isAdmin }) => {
                   display: "flex",
                   alignItems: "center",
                   gap: 1,
+                  transition: "all 0.2s ease",
                   "&:hover": {
                     color: "white",
+                    transform: "translateX(5px)",
                     "& .MuiSvgIcon-root": {
                       transform: "scale(1.1)",
                       color: "#FFB899",
@@ -93,9 +187,15 @@ const Footer = ({ isAdmin }) => {
                   },
                 }}
               >
-                <Home sx={{ color: "#FF9966" }} />
+                <Home
+                  sx={{
+                    color: "#FF9966",
+                    transition: "all 0.2s ease",
+                  }}
+                />
                 Home
               </Link>
+
               {isAdmin && (
                 <Link
                   component="button"
@@ -110,8 +210,10 @@ const Footer = ({ isAdmin }) => {
                     background: "none",
                     border: "none",
                     padding: 0,
+                    transition: "all 0.2s ease",
                     "&:hover": {
                       color: "white",
+                      transform: "translateX(5px)",
                       "& .MuiSvgIcon-root": {
                         transform: "scale(1.1)",
                         color: "#FFB899",
@@ -119,44 +221,96 @@ const Footer = ({ isAdmin }) => {
                     },
                   }}
                 >
-                  <AdminPanelSettings sx={{ color: "#FF9966" }} />
+                  <AdminPanelSettings
+                    sx={{
+                      color: "#FF9966",
+                      transition: "all 0.2s ease",
+                    }}
+                  />
                   Admin Panel
                 </Link>
               )}
+              <Link
+                href="/contact"
+                sx={{
+                  textDecoration: "none",
+                  color: "rgba(255, 255, 255, 0.8)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  transition: "all 0.2s ease",
+                  "&:hover": {
+                    color: "white",
+                    transform: "translateX(5px)",
+                    "& .MuiSvgIcon-root": {
+                      transform: "scale(1.1)",
+                      color: "#FFB899",
+                    },
+                  },
+                }}
+              >
+                <ContactMailIcon
+                  sx={{
+                    color: "#FF9966",
+                    size: "12px",
+                    transition: "all 0.2s ease",
+                  }}
+                />
+                Contact Us
+              </Link>
             </Box>
           </Box>
 
-          <Box sx={{ textAlign: { xs: "center", sm: "left" } }}>
-            <Typography variant="h6" gutterBottom sx={{ color: "white" }}>
+          {/* Social Links */}
+          <Box
+            sx={{
+              textAlign: { xs: "center", sm: "left" },
+              maxWidth: { xs: "100%", sm: "30%" },
+            }}
+          >
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                color: "white",
+                fontWeight: 600,
+                mb: 2,
+              }}
+            >
               Follow Us
             </Typography>
             <Box
               sx={{
                 display: "flex",
-                gap: 1,
+                gap: 2,
                 justifyContent: { xs: "center", sm: "flex-start" },
               }}
             >
               <IconButton
-                aria-label="github"
+                aria-label="Instagram"
                 sx={{
                   color: "#FF9966",
-                  transition: "all 0.2s",
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  transition: "all 0.2s ease",
                   "&:hover": {
-                    transform: "translateY(-2px)",
+                    color: "white",
+                    backgroundColor: "#FF9966",
+                    transform: "translateY(-3px) scale(1.1)",
                   },
                 }}
               >
-                <GitHub />
+                <Instagram />
               </IconButton>
               <IconButton
                 aria-label="linkedin"
                 sx={{
                   color: "#FF9966",
-                  transition: "all 0.2s",
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  transition: "all 0.2s ease",
                   "&:hover": {
-                    color: "#FFB899",
-                    transform: "translateY(-2px)",
+                    color: "white",
+                    backgroundColor: "#FF9966",
+                    transform: "translateY(-3px) scale(1.1)",
                   },
                 }}
               >
@@ -166,10 +320,12 @@ const Footer = ({ isAdmin }) => {
                 aria-label="twitter"
                 sx={{
                   color: "#FF9966",
-                  transition: "all 0.2s",
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  transition: "all 0.2s ease",
                   "&:hover": {
-                    color: "#FFB899",
-                    transform: "translateY(-2px)",
+                    color: "white",
+                    backgroundColor: "#FF9966",
+                    transform: "translateY(-3px) scale(1.1)",
                   },
                 }}
               >
@@ -179,14 +335,39 @@ const Footer = ({ isAdmin }) => {
           </Box>
         </Box>
 
-        <Box sx={{ mt: 4, textAlign: "center" }}>
+        {/* Copyright */}
+        <Box
+          sx={{
+            mt: 4,
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            justifyContent: "space-between",
+            alignItems: "center",
+            borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+            pt: 2,
+            gap: 1,
+          }}
+        >
           <Typography
             variant="body2"
-            sx={{ color: "rgba(255, 255, 255, 0.8)" }}
+            sx={{
+              color: "rgba(255, 255, 255, 0.8)",
+              textAlign: { xs: "center", sm: "left" },
+            }}
           >
             {"© "}
             {new Date().getFullYear()}
-            {" Club Blog - Jawahar Navodaya Vidyalaya, Budgam "}
+            {" Club Blog - Jawahar Navodaya Vidyalaya, Budgam"}
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "rgba(255, 255, 255, 0.6)",
+              fontStyle: "italic",
+              textAlign: { xs: "center", sm: "right" },
+            }}
+          >
+            Created with ❤️ by Basharat Mir
           </Typography>
         </Box>
       </Container>
