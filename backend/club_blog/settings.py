@@ -126,32 +126,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# STATIC_URL = 'static/'
-# STATIC_ROOT = BASE_DIR / "staticfiles"
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-STATIC_URL = '/static/' 
-STATIC_ROOT = BASE_DIR / 'static'  
-STATICFILES_DIRS = [BASE_DIR / 'staticfiles']  
+STATIC_URL = '/static/'  # Add leading slash
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # CORS settings
-CORS_ALLOW_ALL_ORIGINS = True  # Only for development
 CORS_ALLOWED_ORIGINS = [
+   # "https://www.youngwriterclubjnvbudgam.in",
     "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "13.203.111.160",
-    "https://youngwriterclubjnvbudgam.in",
 ]
 CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS.copy()
+
 
 # CSRF trusted origins
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "13.203.111.160",
-    "https://youngwriterclubjnvbudgam.in",
-]
+CSRF_TRUSTED_ORIGINS = ["https://youngwriterclubjnvbudgam.in", "https://www.youngwriterclubjnvbudgam.in"]
+
 
 # Media files
 # MEDIA_URL = '/media/'
