@@ -1,34 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material';
-import { Container, CssBaseline, Box, CircularProgress, Alert } from '@mui/material';
-import Navbar from './components/Navbar';
-import BlogPost from './components/BlogPost';
-import Footer from './components/Footer';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material";
+import {
+  Container,
+  CssBaseline,
+  Box,
+  CircularProgress,
+  Alert,
+} from "@mui/material";
+import Navbar from "./components/Navbar";
+import BlogPost from "./components/BlogPost";
+import Footer from "./components/Footer";
+import AboutUs from "./components/AboutUs";
+import ContactUs from "./components/ContactUs";
+import HomePage from "./components/HomePage";
+import axios from "axios";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1976d2',
-      light: '#42a5f5',
-      dark: '#1565c0',
+      main: "#1976d2",
+      light: "#42a5f5",
+      dark: "#1565c0",
     },
     secondary: {
-      main: '#dc004e',
-      light: '#ff4081',
-      dark: '#9a0036',
+      main: "#dc004e",
+      light: "#ff4081",
+      dark: "#9a0036",
     },
     background: {
-      default: '#f5f5f5',
+      default: "#f5f5f5",
     },
   },
   typography: {
-    fontFamily: [
-      'Roboto',
-      'Arial',
-      'sans-serif'
-    ].join(','),
+    fontFamily: ["Roboto", "Arial", "sans-serif"].join(","),
     h5: {
       fontWeight: 600,
     },
@@ -38,7 +43,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 8,
-          textTransform: 'none',
+          textTransform: "none",
         },
       },
     },
@@ -65,12 +70,14 @@ function App() {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('https://youngwriterclubjnvbudgam.in/api/posts/');
+      const response = await axios.get(
+        "https://youngwriterclubjnvbudgam.in/api/posts/"
+      );
       setPosts(response.data);
       setError(null);
     } catch (error) {
-      console.error('Error fetching posts:', error);
-      setError('Failed to load blog posts. Please try again later.');
+      console.error("Error fetching posts:", error);
+      setError("Failed to load blog posts. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -82,20 +89,20 @@ function App() {
       <Router>
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '100vh',
-            bgcolor: 'background.default'
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100vh",
+            bgcolor: "background.default",
           }}
         >
           <Navbar isAdmin={isAdmin} />
-          <Container 
-            sx={{ 
-              mt: 4, 
-              mb: 4, 
+          <Container
+            sx={{
+              mt: 4,
+              mb: 4,
               flex: 1,
-              display: 'flex',
-              flexDirection: 'column'
+              display: "flex",
+              flexDirection: "column",
             }}
           >
             {error && (
@@ -104,24 +111,27 @@ function App() {
               </Alert>
             )}
             {loading ? (
-              <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
                 <CircularProgress />
               </Box>
             ) : (
               <Routes>
-                <Route 
-                  path="/" 
+                <Route path="/" element={<HomePage />} />
+                <Route
+                  path="/blogs"
                   element={
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                      {posts.map(post => (
-                        <BlogPost 
-                          key={post.id} 
-                          post={post}
-                        />
+                    <Box
+                      sx={{ display: "flex", flexDirection: "column", gap: 3 }}
+                    >
+                      {posts.map((post) => (
+                        <BlogPost key={post.id} post={post} />
                       ))}
                     </Box>
-                  } 
+                  }
                 />
+
+                <Route path="/about" element={<AboutUs />} />
+                <Route path="/contact" element={<ContactUs />} />
               </Routes>
             )}
           </Container>

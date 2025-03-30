@@ -15,7 +15,7 @@ import {
 
 const Footer = ({ isAdmin }) => {
   const handleAdminClick = () => {
-    window.location.href = "http://localhost:8000/admin/";
+    window.location.href = "https://youngwriterclubjnvbudgam.in/admin/";
   };
 
   const handleEmailClick = () => {
@@ -367,7 +367,12 @@ const Footer = ({ isAdmin }) => {
               textAlign: { xs: "center", sm: "right" },
             }}
           >
-            Created with ❤️ by Basharat Mir
+            <a
+              href="mailto:mirbasharat908@gmail.com"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              Created with ❤️ by Basharat Mir
+            </a>
           </Typography>
         </Box>
       </Container>

@@ -32,7 +32,7 @@ const Navbar = ({ isAdmin }) => {
   };
 
   const handleAdminClick = () => {
-    window.location.href = "http://localhost:8000/admin/";
+    window.location.href = "https://youngwriterclubjnvbudgam.in/admin/";
   };
 
   return (

@@ -1,69 +1,82 @@
-import React, { useState } from 'react';
-import { Box, Paper, TextField, Button, Typography, Alert } from '@mui/material';
-import { Login as LoginIcon } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import {
+  Box,
+  Paper,
+  TextField,
+  Button,
+  Typography,
+  Alert,
+} from "@mui/material";
+import { Login as LoginIcon } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = ({ onLoginSuccess }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    
+    setError("");
+
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/login/', formData, {
-        withCredentials: true
-      });
-      
+      const response = await axios.post(
+        "https://youngwriterclubjnvbudgam.in/api/auth/login/",
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
+
       if (response.data.is_staff) {
         onLoginSuccess(response.data);
-        navigate('/');
+        navigate("/");
       } else {
-        setError('Only admin users can log in to manage content.');
+        setError("Only admin users can log in to manage content.");
       }
     } catch (error) {
-      setError('Invalid username or password.');
+      setError("Invalid username or password.");
     }
   };
 
   return (
-    <Box sx={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      minHeight: 'calc(100vh - 200px)'
-    }}>
-      <Paper 
-        elevation={3} 
-        sx={{ 
-          p: 4, 
-          maxWidth: 400, 
-          width: '100%',
-          borderRadius: 2
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "calc(100vh - 200px)",
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          p: 4,
+          maxWidth: 400,
+          width: "100%",
+          borderRadius: 2,
         }}
       >
-        <Typography 
-          variant="h5" 
-          component="h1" 
-          gutterBottom 
-          sx={{ 
-            textAlign: 'center',
+        <Typography
+          variant="h5"
+          component="h1"
+          gutterBottom
+          sx={{
+            textAlign: "center",
             fontWeight: 600,
-            mb: 3
+            mb: 3,
           }}
         >
           Admin Login
@@ -85,9 +98,9 @@ const Login = ({ onLoginSuccess }) => {
             margin="normal"
             required
             sx={{
-              '& .MuiOutlinedInput-root': {
-                borderRadius: 2
-              }
+              "& .MuiOutlinedInput-root": {
+                borderRadius: 2,
+              },
             }}
           />
           <TextField
@@ -100,9 +113,9 @@ const Login = ({ onLoginSuccess }) => {
             margin="normal"
             required
             sx={{
-              '& .MuiOutlinedInput-root': {
-                borderRadius: 2
-              }
+              "& .MuiOutlinedInput-root": {
+                borderRadius: 2,
+              },
             }}
           />
           <Button
@@ -114,7 +127,7 @@ const Login = ({ onLoginSuccess }) => {
               mt: 3,
               py: 1.5,
               borderRadius: 2,
-              textTransform: 'none'
+              textTransform: "none",
             }}
           >
             Login
